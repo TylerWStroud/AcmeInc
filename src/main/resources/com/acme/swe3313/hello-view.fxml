@@ -9,7 +9,7 @@
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
-   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="4.0" style="-fx-background-color: white; -fx-background-radius: 4px; -fx-padding: 20px;">
+   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="4.0" style="-fx-background-color: white; -fx-background-radius: 4px; -fx-padding: 32px;">
       <children>
          <Label text="Email">
             <font>
