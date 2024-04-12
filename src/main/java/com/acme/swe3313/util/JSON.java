@@ -12,7 +12,7 @@ public class JSON {
     /**
      * Parse a JSON file and return the parsed object
      * @param fileName
-     * @return
+     * @return the parsed JSON object
      */
     public static JSONObject parse(String fileName) {
         Reader reader = new InputStreamReader((JSON.class.getResourceAsStream(fileName)));

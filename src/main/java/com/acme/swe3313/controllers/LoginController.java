@@ -28,9 +28,6 @@ public class LoginController {
         Associate associate = new Associate();
 
         try {
-
-
-
             if (associate.login(email, password)) {
                 System.out.println("Login successful");
             } else {
