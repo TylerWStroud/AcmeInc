@@ -1,31 +1,62 @@
 package com.acme.swe3313.models;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.acme.swe3313.util.JSON;
 
-import java.io.FileReader;
-import java.io.IOException;
+import org.json.simple.JSONObject;
 
 public class Associate {
-    private boolean isLoggedIn = false;
     private String name;
     private String email;
+    private boolean isLoggedIn = false;
 
+    /**
+     * Get the associate's name
+     * @return the associate's name
+     */
+    public String getName() {
+        return name;
+    }
 
-    private boolean login(String email, String password) throws IOException, ParseException {
-        Object object = new JSONParser().parse(new FileReader("associates.json"));
+    /**
+     * Get the associate's email
+     * @return the associate's email
+     */
+    public String getEmail() {
+        return email;
+    }
 
-        JSONObject jsonObject = (JSONObject) object;
+    /**
+     * Check if the associate is logged in
+     * @return true if the associate is logged in, false otherwise
+     */
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
 
-        // Loop through the array of associates and check if the email and password match for any of them
-        for (Object associate : (Iterable<?>) jsonObject) {
-            JSONObject associateObject = (JSONObject) associate;
+    /**
+     * Log into an associates account, sets all the associate's information if successful
+     * @param email
+     * @param password
+     * @return
+     */
+    public boolean login(String email, String password) {
+        // Read the associates.json file, and parse it's JSON content
+        JSONObject associates = JSON.parse("/associates.json");
 
-            if (associateObject.get("email").equals(email) && associateObject.get("password").equals(password)) {
+        if (associates == null) {
+            return false;
+        }
+
+        // Get the associate with the given email (if it exists)
+        JSONObject associate = (JSONObject) associates.get(email);
+
+        // If the associate exists, and the password matches, set the associate's information
+        if (associate != null) {
+            if (associate.get("password").equals(password)) {
+                this.name = (String) associate.get("name");
+                this.email = email;
                 this.isLoggedIn = true;
-                this.name = (String) associateObject.get("name");
-                this.email = (String) associateObject.get("email");
+
                 return true;
             }
         }
