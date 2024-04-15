@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class LoginController {
-
     @FXML
     private TextField emailInput;
     @FXML
@@ -23,7 +22,6 @@ public class LoginController {
 
     String email;
     String password;
-
 
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
