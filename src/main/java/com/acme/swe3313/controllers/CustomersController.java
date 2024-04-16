@@ -25,9 +25,6 @@ public class CustomersController {
 
     @FXML
     private void onAddCustomer(ActionEvent event) throws IOException{
-    Application.setScene("add-customer.fxml");
-}
-    //@FXML
-
-
+        Application.setScene("add-customer.fxml");
+    }
 }

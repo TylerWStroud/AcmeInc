@@ -1,3 +1,6 @@
+package com.acme.swe3313.controllers;
+
+import com.acme.swe3313.Application;
 import com.acme.swe3313.models.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +38,10 @@ public class AddCustomerController {
     String dockCapabilities;
 
     @FXML
+    private void onExit(ActionEvent event) throws IOException{
+        Application.setScene("customers-view.fxml");
+    }
+    @FXML
     private void onContinue(ActionEvent event) throws IOException {
         name = nameInput.getText();
         address = addressInput.getText();
@@ -53,12 +60,5 @@ public class AddCustomerController {
         dockCapabilities = dockCapabilitiesInput.getText();
 
         Customer customer = new Customer(name, license, streetAddress, city, state, dockCapabilities);
-
-
-
-
     }
-
-
-
 }
