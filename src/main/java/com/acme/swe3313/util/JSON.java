@@ -1,12 +1,11 @@
 package com.acme.swe3313.util;
 
+import com.acme.swe3313.Application;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 
 public class JSON {
     /**
@@ -27,5 +26,28 @@ public class JSON {
         }
 
         return null;
+    }
+
+    /**
+     * Write a JSON object to a file
+     * @param fileName
+     * @param jsonObject
+     */
+    public static void write(String fileName, JSONObject jsonObject) {
+        String path = Application.PROGRAM_DATA_PATH + fileName;
+
+        try {
+            // Ensure the file exists, create it if it doesn't
+            // This will NOT overwrite the file if it already exists
+            new File(path).createNewFile();
+
+            // Attempt to write the JSON object to the file
+            try (FileWriter fileWriter = new FileWriter(path)) {
+                fileWriter.write(jsonObject.toJSONString());
+                fileWriter.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
