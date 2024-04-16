@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button fx:id="exitButton" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#onExit" text="X" translateX="580.0" translateY="5.0" />
+        <Label text="Create Customer" translateX="10.0" translateY="-15.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label text="Enter the customer's information below" translateX="10.0" translateY="-15.0" />
+        <Label prefHeight="20.0" prefWidth="50.0" text="Name" translateX="10.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="name" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter name" translateX="10.0" />
+        <Label prefHeight="20.0" prefWidth="79.0" text="Address" translateX="10.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="address" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter address" translateX="10.0" />
+        <Label prefHeight="20.0" prefWidth="141.0" text="Beer License Number" translateX="10.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="license" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter associate's license number" translateX="10.0" />
+        <Label prefHeight="21.0" prefWidth="124.0" text="Payment Method" translateX="10.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="cardNumber" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter card number" translateX="10.0" />
+        <TextField fx:id="expiration" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="expiration date" translateX="10.0" translateY="10.0" />
+        <TextField fx:id="cvv" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" promptText="CVV" translateX="300.0" translateY="-20.0" />
+        <Label prefHeight="24.0" prefWidth="213.0" text="Dock Capabilities/Constraints" translateX="10.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="dockCap" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="600.0" promptText="Enter constraints" translateX="10.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </TextField>
+        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#onContinue" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #03014F;" text="Continue " textFill="WHITE" translateX="270.0" translateY="5.0" VBox.vgrow="SOMETIMES" />
+    </children>
+</VBox>
