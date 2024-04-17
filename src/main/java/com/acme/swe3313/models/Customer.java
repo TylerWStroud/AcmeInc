@@ -17,17 +17,17 @@ public class Customer {
     private String city;
     private String streetAddress;
     private  String dockCapabilities;
-    private String deliveryConstraints;
     private  String fullAddress = getStreetAddress()+", "+getCity()+", "+getState()+", "+getZip();
     private String customerId;
     private String name;
     private String store;
-    private int phone;
+    private String phone;
 
     public String getBeerLicense(){return license;}
     public String getName(){return name;}
     public String getStore(){return store;}
     public void setStore(String storeSet){store=storeSet;}
+    public String getCustomerId(){return customerId;}
     public String getCity(){return city;}
     public void setCity(String citySet){city=citySet;}
     public int getZip(){return zip;}
@@ -35,28 +35,38 @@ public class Customer {
     public String getStreetAddress(){return streetAddress;}
 
     public String getFullAddress(){return fullAddress;}
+    public String getPhone(){return phone;}
+    public void setPhone(String phoneNum){phone=phoneNum;}
 
-    public Customer(String n, String l, String sA, String c, String s, String dock){
+    public Customer(String n, String sT, String l, String sA, String c, String s, String dock, String phoneNum){
         name=n;
-        store=" ";
+        store=sT;
         license=l;
-        /**
-         * generating random license number per customer object
-         *
-        for(int i = 0; i< beerLicense.length-1; i++){
-            beerLicense[i]= ThreadLocalRandom.current().nextInt(0,9);
+
+        /**generating unique customer ID*/
+        StringBuilder prefix = new StringBuilder(" ");
+        StringBuilder storeId = new StringBuilder(" ");
+        String[] storeSplit = store.split(" ");
+        for(int i=0; i< storeSplit.length; i++){
+            if(storeSplit[i].equalsIgnoreCase("the")){
+                prefix.append(storeSplit[i].toUpperCase());
+            }
+            else{
+                prefix.append(storeSplit[i].charAt(0));}
         }
-        for (int j : beerLicense) {
-            license = license * 10 + j;
+        storeId.append(prefix+"_");
+        for(int i=0; i<(12-prefix.length()); i++){
+            storeId.append(rand.nextInt(9));
         }
-        */
+        customerId= String.valueOf(storeId);
+        /***/
+
         //zip=0;   **keep just in case zip is needed**
         streetAddress=sA;
         city=c;
         state=s;
-        dockCapabilities=" ";
-        customerId=" ";
-        phone=0;
+        dockCapabilities=dock;
+        phone=phoneNum;
     }
 
 }
