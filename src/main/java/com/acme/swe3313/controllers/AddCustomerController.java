@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 public class AddCustomerController {
@@ -59,5 +61,10 @@ public class AddCustomerController {
         dockCapabilities = dockCapabilitiesInput.getText();
 
         Customer customer = new Customer(name, license, streetAddress, city, state, dockCapabilities);
+         customer parse into customers.json
+
+
+        JSONParser parse = new JSONParser();
+
     }
 }
