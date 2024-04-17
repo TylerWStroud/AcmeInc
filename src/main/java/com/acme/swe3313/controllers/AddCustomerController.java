@@ -2,6 +2,7 @@ package com.acme.swe3313.controllers;
 
 import com.acme.swe3313.Application;
 import com.acme.swe3313.models.Customer;
+import com.acme.swe3313.util.JSON;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,12 +12,15 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 public class AddCustomerController {
+
     @FXML
     private TextField nameInput;
     @FXML
     private TextField addressInput;
     @FXML
     private TextField licenseInput;
+    @FXML
+    private TextField phoneNumberInput;
     @FXML
     private TextField cardNumInput;
     @FXML
@@ -26,10 +30,13 @@ public class AddCustomerController {
     @FXML
     private TextField dockCapabilitiesInput;
     @FXML
+    private TextField storeNameInput;
+    @FXML
     private Button submitButton;
     @FXML
     private Button exitButton;
 
+    String store;
     String name;
     String address;
     String license;
@@ -37,6 +44,7 @@ public class AddCustomerController {
     String cardExp;
     String cardCvv;
     String dockCapabilities;
+    String phoneNumber;
 
     @FXML
     private void onExit(ActionEvent event) throws IOException{
@@ -44,6 +52,7 @@ public class AddCustomerController {
     }
     @FXML
     private void onContinue(ActionEvent event) throws IOException {
+        store = storeNameInput.getText();
         name = nameInput.getText();
         address = addressInput.getText();
 
@@ -54,17 +63,26 @@ public class AddCustomerController {
         String state=addy[2];
         /***/
 
+
+        phoneNumber = phoneNumberInput.getText();
         license = licenseInput.getText();
         cardNum = cardNumInput.getText();
         cardExp = cardExpInput.getText();
         cardCvv = cardCvvInput.getText();
         dockCapabilities = dockCapabilitiesInput.getText();
 
-        Customer customer = new Customer(name, license, streetAddress, city, state, dockCapabilities);
-         customer parse into customers.json
+        Customer customer = new Customer(name, store, license, streetAddress, city, state, dockCapabilities, phoneNumber );
+        JSONObject newCustomer = new JSONObject();
+        newCustomer.put("store", customer.getStore());
+        newCustomer.put("customer ID", customer.getCustomerId());
+        newCustomer.put("name", customer.getName());
+        newCustomer.put("address", customer.getStreetAddress());
+        newCustomer.put("city", customer.getCity());
+        newCustomer.put("state", customer.getState());
+        newCustomer.put("phone", customer.getPhone());
+        JSON.write("/customers.json", newCustomer);
 
-
-        JSONParser parse = new JSONParser();
-
+        //JSON.write("/customers.json", JSONObject.);
+        Application.setScene("customers-view.fxml");
     }
 }
