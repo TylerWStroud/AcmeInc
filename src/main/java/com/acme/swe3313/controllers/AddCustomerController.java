@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
-public class AddCustomerController {
+public class AddCustomerController extends Application{
     @FXML
     private TextField storeNameInput;
     @FXML
@@ -40,8 +40,10 @@ public class AddCustomerController {
     }
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
-        JSONObject customers = JSON.parseDynamic("/customers.json");
-
+        JSONObject customersJSON = JSON.parseDynamic("/customers.json");
+        /**
+         * renamed JSONObject declaration from "customers" to "customersJSON" so I could use the "customers" arrayList declaration from application
+         * */
         String storeName = storeNameInput.getText();
         String customerName = nameInput.getText();
         String streetAddress = streetAddressInput.getText();
@@ -56,6 +58,8 @@ public class AddCustomerController {
 
         // Create the new customer object
         Customer customer = new Customer(customerName, storeName, license, streetAddress, city, state, dockCapabilities, phoneNumber );
+        //adding customer object to customers ArrayList declared in Application
+        customers.add(customer);
 
         JSONObject newCustomer = new JSONObject();
         newCustomer.put("store", customer.getStore());
@@ -67,11 +71,11 @@ public class AddCustomerController {
         newCustomer.put("phone", customer.getPhone());
 
         // Write the new customer to the customers.json file
-        customers.put(customer.getCustomerId(), newCustomer);
+        customersJSON.put(customer.getCustomerId(), newCustomer);
 
-        System.out.println(customers);
+        System.out.println(customersJSON);
 
-        JSON.write("/customers.json", customers);
+        JSON.write("/customers.json", customersJSON);
 
         Application.setScene("customers-view.fxml");
     }
