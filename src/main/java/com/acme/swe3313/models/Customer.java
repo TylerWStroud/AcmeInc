@@ -43,9 +43,9 @@ public class Customer {
         store=sT;
         license=l;
 
-        /**generating unique customer ID*/
-        StringBuilder prefix = new StringBuilder(" ");
-        StringBuilder storeId = new StringBuilder(" ");
+        // Create a unique customer ID
+        StringBuilder prefix = new StringBuilder();
+        StringBuilder storeId = new StringBuilder();
         String[] storeSplit = store.split(" ");
         for(int i=0; i< storeSplit.length; i++){
             if(storeSplit[i].equalsIgnoreCase("the")){
@@ -59,7 +59,6 @@ public class Customer {
             storeId.append(rand.nextInt(9));
         }
         customerId= String.valueOf(storeId);
-        /***/
 
         //zip=0;   **keep just in case zip is needed**
         streetAddress=sA;

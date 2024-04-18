@@ -29,6 +29,26 @@ public class JSON {
     }
 
     /**
+     * Parse a dynamic JSON file from the program data path
+     * @param fileName
+     * @return the parsed JSON object
+     */
+    public static JSONObject parseDynamic(String fileName) {
+        String path = Application.PROGRAM_DATA_PATH + fileName;
+
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject parsedJson = (JSONObject) parser.parse(new FileReader(path));
+
+            return parsedJson;
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
      * Write a JSON object to a file
      * @param fileName
      * @param jsonObject
