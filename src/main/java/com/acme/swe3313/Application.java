@@ -5,6 +5,7 @@ import com.acme.swe3313.util.JSON;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.File;
@@ -16,8 +17,6 @@ public class Application extends javafx.application.Application {
     public static List<Customer> customers = new ArrayList<>();
     public static final String PROGRAM_DATA_PATH = System.getenv("APPDATA") + "\\Acme Distributing";
     private static Stage primaryStage;
-
-
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -57,7 +56,7 @@ public class Application extends javafx.application.Application {
 
         // If the file was just created, write an empty json object to it
         if (customersFileCreated) {
-            JSON.write("/customers.json", new JSONObject());
+            JSON.write("/customers.json", new JSONArray());
         }
 
         // Ensure the orders.json file exists, and create it if it doesn't.

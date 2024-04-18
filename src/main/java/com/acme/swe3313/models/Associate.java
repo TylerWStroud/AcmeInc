@@ -41,7 +41,7 @@ public class Associate {
      */
     public boolean login(String email, String password) {
         // Read the associates.json file, and parse it's JSON content
-        JSONObject associates = JSON.parse("/associates.json");
+        JSONObject associates = JSON.parseObject("/associates.json");
 
         if (associates == null) {
             return false;

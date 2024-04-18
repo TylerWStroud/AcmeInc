@@ -6,6 +6,7 @@ import com.acme.swe3313.util.JSON;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class AddCustomerController {
     }
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
-        JSONObject customers = JSON.parseDynamic("/customers.json");
+        JSONArray customers = JSON.parseDynamicArray("/customers.json");
 
         String storeName = storeNameInput.getText();
         String customerName = nameInput.getText();
@@ -58,6 +59,7 @@ public class AddCustomerController {
         Customer customer = new Customer(customerName, storeName, license, streetAddress, city, state, dockCapabilities, phoneNumber );
 
         JSONObject newCustomer = new JSONObject();
+
         newCustomer.put("store", customer.getStore());
         newCustomer.put("customer_id", customer.getCustomerId());
         newCustomer.put("name", customer.getName());
@@ -66,11 +68,9 @@ public class AddCustomerController {
         newCustomer.put("state", customer.getState());
         newCustomer.put("phone", customer.getPhone());
 
+        customers.add(newCustomer);
+
         // Write the new customer to the customers.json file
-        customers.put(customer.getCustomerId(), newCustomer);
-
-        System.out.println(customers);
-
         JSON.write("/customers.json", customers);
 
         Application.setScene("customers-view.fxml");
