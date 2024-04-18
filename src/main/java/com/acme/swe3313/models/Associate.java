@@ -1,7 +1,9 @@
 package com.acme.swe3313.models;
 
+import com.acme.swe3313.Application;
 import com.acme.swe3313.util.JSON;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Associate {
@@ -57,10 +59,22 @@ public class Associate {
                 this.email = email;
                 this.isLoggedIn = true;
 
+                // Once they login, populate
+//                JSONArray array = JSON.parseDynamicArray("/customers.json");
+//
+//                for (Object obj : array) {
+//                    JSONObject customer = (JSONObject) obj;
+//                    Customer c = new Customer();
+//
+//                    Application.customers.add()
+//                }
+
                 return true;
             }
         }
 
         return false;
     }
+
+
 }
