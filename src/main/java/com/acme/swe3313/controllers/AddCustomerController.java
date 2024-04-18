@@ -6,10 +6,11 @@ import com.acme.swe3313.util.JSON;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
-public class AddCustomerController extends Application{
+public class AddCustomerController {
     @FXML
     private TextField storeNameInput;
     @FXML
@@ -40,10 +41,8 @@ public class AddCustomerController extends Application{
     }
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
-        JSONObject customersJSON = JSON.parseDynamic("/customers.json");
-        /**
-         * renamed JSONObject declaration from "customers" to "customersJSON" so I could use the "customers" arrayList declaration from application
-         * */
+        JSONArray customers = JSON.parseDynamicArray("/customers.json");
+
         String storeName = storeNameInput.getText();
         String customerName = nameInput.getText();
         String streetAddress = streetAddressInput.getText();
@@ -58,10 +57,9 @@ public class AddCustomerController extends Application{
 
         // Create the new customer object
         Customer customer = new Customer(customerName, storeName, license, streetAddress, city, state, dockCapabilities, phoneNumber );
-        //adding customer object to customers ArrayList declared in Application
-        customers.add(customer);
 
         JSONObject newCustomer = new JSONObject();
+
         newCustomer.put("store", customer.getStore());
         newCustomer.put("customer_id", customer.getCustomerId());
         newCustomer.put("name", customer.getName());
@@ -70,12 +68,10 @@ public class AddCustomerController extends Application{
         newCustomer.put("state", customer.getState());
         newCustomer.put("phone", customer.getPhone());
 
+        customers.add(newCustomer);
+
         // Write the new customer to the customers.json file
-        customersJSON.put(customer.getCustomerId(), newCustomer);
-
-        System.out.println(customersJSON);
-
-        JSON.write("/customers.json", customersJSON);
+        JSON.write("/customers.json", customers);
 
         Application.setScene("customers-view.fxml");
     }
