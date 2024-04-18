@@ -13,11 +13,7 @@ import java.io.IOException;
 
 public class CustomersController {
     @FXML
-    private Label pageCount;
-    @FXML
     private Button addCustomerButton;
-    @FXML
-    private Button menuOptionsButton;
     @FXML
     private Button checkAllButton;
     @FXML
