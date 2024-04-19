@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
+
 public class AddCustomerController {
     @FXML
     private TextField storeNameInput;
@@ -42,6 +43,7 @@ public class AddCustomerController {
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
         JSONArray customers = JSON.parseDynamicArray("/customers.json");
+        System.out.print(customers);
 
         String storeName = storeNameInput.getText();
         String customerName = nameInput.getText();
@@ -50,9 +52,9 @@ public class AddCustomerController {
         String state = stateInput.getText();
         String phoneNumber = phoneNumberInput.getText();
         String license = licenseInput.getText();
-        String cardNum = cardNumInput.getText();
-        String cardExp = cardExpInput.getText();
-        String cardCvv = cardCvvInput.getText();
+       /* String cardNum = cardNumInput.getText();
+        String cardExp = cardExpInput.getText();         HOLDING INCASE NECESSARY
+        String cardCvv = cardCvvInput.getText();*/
         String dockCapabilities = dockCapabilitiesInput.getText();
 
         // Create the new customer object
