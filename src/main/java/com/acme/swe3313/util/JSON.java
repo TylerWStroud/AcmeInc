@@ -60,7 +60,6 @@ public class JSON {
         try {
             JSONParser parser = new JSONParser();
             JSONObject parsedJson = (JSONObject) parser.parse(new FileReader(path));
-
             return parsedJson;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -68,6 +67,8 @@ public class JSON {
 
         return null;
     }
+
+
 
     /**
      * Parse a dynamic JSON array file from the program data path

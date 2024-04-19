@@ -1,10 +1,6 @@
 package com.acme.swe3313.models;
 
-import com.acme.swe3313.util.JSON;
-
-import java.util.Scanner;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 //import org.json.simple.JSONObject;
 
@@ -24,12 +20,15 @@ public class Customer {
     private String phone;
 
     public String getBeerLicense(){return license;}
+    public void setBeerLicense(String setLicense){license=setLicense;}
     public String getName(){return name;}
     public String getStore(){return store;}
     public void setStore(String storeSet){store=storeSet;}
     public String getCustomerId(){return customerId;}
+    public void setCustomerId(String iD){customerId=iD;}
     public String getCity(){return city;}
     public void setCity(String citySet){city=citySet;}
+    public void setDockCapabilities(String dock){dockCapabilities=dock;}
     public int getZip(){return zip;}
     public String getState(){return state;}
     public String getStreetAddress(){return streetAddress;}
@@ -38,10 +37,9 @@ public class Customer {
     public String getPhone(){return phone;}
     public void setPhone(String phoneNum){phone=phoneNum;}
 
-    public Customer(String n, String sT, String l, String sA, String c, String s, String dock, String phoneNum){
+    public Customer(String n, String sT, String sA, String c, String s, String phoneNum){
         name=n;
         store=sT;
-        license=l;
 
         // Create a unique customer ID
         StringBuilder prefix = new StringBuilder();
@@ -55,17 +53,19 @@ public class Customer {
                 prefix.append(storeSplit[i].charAt(0));}
         }
         storeId.append(prefix+"_");
-        for(int i=0; i<(12-prefix.length()); i++){
+        for(int i=0; i<(14-prefix.length()); i++){
             storeId.append(rand.nextInt(9));
         }
         customerId= String.valueOf(storeId);
 
-        //zip=0;   **keep just in case zip is needed**
         streetAddress=sA;
         city=c;
         state=s;
-        dockCapabilities=dock;
+        dockCapabilities=" ";
         phone=phoneNum;
+    }
+    public static void importToCustomerJSON(Customer customer){
+
     }
 
 }
