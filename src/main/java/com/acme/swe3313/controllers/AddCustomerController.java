@@ -56,8 +56,9 @@ public class AddCustomerController {
         String dockCapabilities = dockCapabilitiesInput.getText();
 
         // Create the new customer object
-        Customer customer = new Customer(customerName, storeName, license, streetAddress, city, state, dockCapabilities, phoneNumber );
-
+        Customer customer = new Customer(customerName, storeName, streetAddress, city, state, phoneNumber );
+        customer.setDockCapabilities(dockCapabilities);
+        customer.setBeerLicense(license);
         JSONObject newCustomer = new JSONObject();
 
         newCustomer.put("store", customer.getStore());

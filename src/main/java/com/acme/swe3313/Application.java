@@ -68,6 +68,29 @@ public class Application extends javafx.application.Application {
             JSON.write("/orders.json", new JSONObject());
         }
     }
+    public static void populateCustomers(){
+        JSONObject customerObj = JSON.parseObject("/customers.json");
+
+        /**
+         * creating a String array based on object.keySet() to use as an iterative search variable
+         * */
+        String keySet=customerObj.keySet().toString();
+        keySet=keySet.replaceFirst("]", ",");
+        keySet = keySet.substring(1);
+        String[] keySetArray = keySet.split(","+" ");
+        String replaceLastIndex = keySetArray[keySetArray.length-1].replace(",","");
+        keySetArray[keySetArray.length-1]=replaceLastIndex;
+
+        /**
+         * populating customersArrayList
+         * */
+        for(String e: keySetArray){
+            JSONObject tempObj = (JSONObject)customerObj.get(e);
+            Customer tempCustomer = new Customer(tempObj.get("name").toString(), e, tempObj.get("address").toString(), tempObj.get("city").toString(), tempObj.get("state").toString(), tempObj.get("phone").toString());
+            tempCustomer.setCustomerId(tempObj.get("iD").toString());
+            customers.add(tempCustomer);
+        }
+    }
 
     public static void main(String[] args) {
         // First, create the necessary files

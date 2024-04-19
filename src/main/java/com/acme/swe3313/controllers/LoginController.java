@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import static com.acme.swe3313.Application.populateCustomers;
 
 public class LoginController {
     @FXML
@@ -26,6 +27,7 @@ public class LoginController {
 
         try {
             if (associate.login(email, password)) {
+                populateCustomers();
                 Application.setScene("customers-view.fxml");
             } else {
                 errorLabel.setVisible(true);
@@ -35,4 +37,5 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+
 }
