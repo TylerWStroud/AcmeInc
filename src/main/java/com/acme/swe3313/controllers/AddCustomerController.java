@@ -2,19 +2,30 @@ package com.acme.swe3313.controllers;
 
 import com.acme.swe3313.Application;
 import com.acme.swe3313.models.Customer;
+import com.acme.swe3313.util.JSON;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
+
 public class AddCustomerController {
+    @FXML
+    private TextField storeNameInput;
     @FXML
     private TextField nameInput;
     @FXML
-    private TextField addressInput;
+    private TextField streetAddressInput;
+    @FXML
+    private TextField cityInput;
+    @FXML
+    private TextField stateInput;
     @FXML
     private TextField licenseInput;
+    @FXML
+    private TextField phoneNumberInput;
     @FXML
     private TextField cardNumInput;
     @FXML
@@ -23,41 +34,48 @@ public class AddCustomerController {
     private TextField cardCvvInput;
     @FXML
     private TextField dockCapabilitiesInput;
-    @FXML
-    private Button submitButton;
-    @FXML
-    private Button exitButton;
 
-    String name;
-    String address;
-    String license;
-    String cardNum;
-    String cardExp;
-    String cardCvv;
-    String dockCapabilities;
 
     @FXML
     private void onExit(ActionEvent event) throws IOException{
         Application.setScene("customers-view.fxml");
     }
     @FXML
-    private void onContinue(ActionEvent event) throws IOException {
-        name = nameInput.getText();
-        address = addressInput.getText();
+    private void onSubmit(ActionEvent event) throws IOException {
+        JSONArray customers = JSON.parseDynamicArray("/customers.json");
+        System.out.print(customers);
 
-        /** splitting the input address to be accessible for declaring street, city, state attributes*/
-        String[] addy=address.split(",");
-        String streetAddress=addy[0];
-        String city=addy[1];
-        String state=addy[2];
-        /***/
+        String storeName = storeNameInput.getText();
+        String customerName = nameInput.getText();
+        String streetAddress = streetAddressInput.getText();
+        String city = cityInput.getText();
+        String state = stateInput.getText();
+        String phoneNumber = phoneNumberInput.getText();
+        String license = licenseInput.getText();
+       /* String cardNum = cardNumInput.getText();
+        String cardExp = cardExpInput.getText();         HOLDING INCASE NECESSARY
+        String cardCvv = cardCvvInput.getText();*/
+        String dockCapabilities = dockCapabilitiesInput.getText();
 
-        license = licenseInput.getText();
-        cardNum = cardNumInput.getText();
-        cardExp = cardExpInput.getText();
-        cardCvv = cardCvvInput.getText();
-        dockCapabilities = dockCapabilitiesInput.getText();
+        // Create the new customer object
+        Customer customer = new Customer(customerName, storeName, streetAddress, city, state, phoneNumber );
+        customer.setDockCapabilities(dockCapabilities);
+        customer.setBeerLicense(license);
+        JSONObject newCustomer = new JSONObject();
 
-        Customer customer = new Customer(name, license, streetAddress, city, state, dockCapabilities);
+        newCustomer.put("store", customer.getStore());
+        newCustomer.put("customer_id", customer.getCustomerId());
+        newCustomer.put("name", customer.getName());
+        newCustomer.put("address", customer.getStreetAddress());
+        newCustomer.put("city", customer.getCity());
+        newCustomer.put("state", customer.getState());
+        newCustomer.put("phone", customer.getPhone());
+
+        customers.add(newCustomer);
+
+        // Write the new customer to the customers.json file
+        JSON.write("/customers.json", customers);
+
+        Application.setScene("customers-view.fxml");
     }
 }

@@ -13,7 +13,7 @@
       "iD": "BPDGS_254786510",
       "address": "2960 Shallowford Rd",
       "city": "Marietta",
-      "sate": "GA",
+      "state": "GA",
       "phone": "585 812 5784"
   },
   "The Restaurant": {
@@ -21,7 +21,7 @@
     "iD": "TREST_985741204",
     "address": "3460 Sandie Plains Rd",
     "city": "Marietta",
-    "sate": "GA",
+    "state": "GA",
     "phone": "547 555 1217"
   },
   "GHI Beverages": {
@@ -29,7 +29,7 @@
     "iD": "GHIBS_012382109",
     "address": "3324 Cobb Parkway",
     "city": "Marietta",
-    "sate": "GA",
+    "state": "GA",
     "phone": "878 555 1214"
   },
   "XYZ Groceries": {
@@ -37,7 +37,7 @@
     "iD": "XYZGS_654786810",
     "address": "2860 Deep River Rd",
     "city": "Marietta",
-    "sate": "GA",
+    "state": "GA",
     "phone": "572 812 5674"
   },
   "The Corner Restaurant": {
@@ -45,15 +45,8 @@
     "iD": "TCRST_945741304",
     "address": "34104 Madison Hwy",
     "city": "Marietta",
-    "sate": "GA",
+    "state": "GA",
     "phone": "567 555 1210"
-  },
-  "": {
-    "name": "",
-    "iD": "",
-    "address": "",
-    "city": "",
-    "sate": "",
-    "phone": ""
   }
+
 }

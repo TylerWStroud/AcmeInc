@@ -1,55 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.swe3313.controllers.AddCustomerController">
-    <children>
-        <Button fx:id="exitButton" cancelButton="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#onExit" text="X" translateX="580.0" translateY="5.0" />
-        <Label text="Create Customer" translateX="10.0" translateY="-15.0">
+<VBox alignment="CENTER" prefHeight="1080.0" prefWidth="1920.0" spacing="12.0" style="-fx-background-color: F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.swe3313.controllers.AddCustomerController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="4.0" style="-fx-background-color: white; -fx-background-radius: 4px; -fx-padding: 32px;">
+        <children>
+            <Label text="Create Customer">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+         </Label>
+            <Label text="Enter the customer's information" textFill="#6b7280">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <Label text="Store Name">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <TextField fx:id="storeNameInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the store name..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <padding>
+                    <Insets top="20.0" />
+                </padding>
+         </TextField>
+            <Label layoutX="30.0" layoutY="30.0" text="Customer Name">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+         <TextField fx:id="nameInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the customer's name..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
             <font>
-                <Font size="24.0" />
+               <Font size="14.0" />
             </font>
-        </Label>
-        <Label text="Enter the customer's information below" translateX="10.0" translateY="-15.0" />
-        <Label prefHeight="20.0" prefWidth="50.0" text="Name" translateX="10.0">
+            <padding>
+               <Insets top="20.0" />
+            </padding>
+         </TextField>
+         <Label layoutX="42.0" layoutY="210.0" text="Phone Number">
             <font>
-                <Font size="14.0" />
+               <Font size="14.0" />
             </font>
-        </Label>
-        <TextField fx:id="nameInput" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter name" translateX="10.0" />
-        <Label prefHeight="20.0" prefWidth="79.0" text="Address" translateX="10.0">
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </Label>
+         <TextField fx:id="phoneNumberInput" layoutX="42.0" layoutY="234.0" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the phone number..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
             <font>
-                <Font size="14.0" />
+               <Font size="14.0" />
             </font>
-        </Label>
-        <TextField fx:id="addressInput" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter address" translateX="10.0" />
-        <Label prefHeight="20.0" prefWidth="141.0" text="Beer License Number" translateX="10.0">
+            <padding>
+               <Insets top="20.0" />
+            </padding>
+         </TextField>
+         <Label text="Beer License Number">
             <font>
-                <Font size="14.0" />
+               <Font size="14.0" />
             </font>
-        </Label>
-        <TextField fx:id="licenseInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter associate's license number" translateX="10.0" />
-        <Label prefHeight="21.0" prefWidth="124.0" text="Payment Method" translateX="10.0">
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </Label>
+         <TextField fx:id="licenseInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the beer license number..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
             <font>
-                <Font size="14.0" />
+               <Font size="14.0" />
             </font>
-        </Label>
-        <TextField fx:id="cardNumInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="600.0" promptText="Enter card number" translateX="10.0" />
-        <TextField fx:id="cardExpInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="expiration date" translateX="10.0" translateY="10.0" />
-        <TextField fx:id="cardCvvInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" promptText="CVV" translateX="300.0" translateY="-20.0" />
-        <Label prefHeight="24.0" prefWidth="213.0" text="Dock Capabilities/Constraints" translateX="10.0">
+            <padding>
+               <Insets top="20.0" />
+            </padding>
+         </TextField>
+         <Label layoutX="42.0" layoutY="210.0" text="Address">
             <font>
-                <Font size="14.0" />
+               <Font size="14.0" />
             </font>
-        </Label>
-        <TextField fx:id="dockCapabilitiesInput" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="600.0" promptText="Enter constraints" translateX="10.0">
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-        </TextField>
-        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#onContinue" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #03014F;" text="Continue " textFill="WHITE" translateX="270.0" translateY="5.0" VBox.vgrow="SOMETIMES" />
-    </children>
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </Label>
+         <TextField fx:id="streetAddressInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the street address..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <padding>
+               <Insets top="20.0" />
+            </padding>
+         </TextField>
+         <HBox prefWidth="200.0" spacing="8.0">
+            <children>
+               <TextField fx:id="cityInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the city..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <padding>
+                     <Insets top="20.0" />
+                  </padding>
+               </TextField>
+               <TextField fx:id="stateInput" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the state..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <padding>
+                     <Insets top="20.0" />
+                  </padding>
+               </TextField>
+            </children>
+         </HBox>
+         <Label text="Payment Information">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </Label>
+         <TextField fx:id="cardNumInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the credit card number..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <padding>
+               <Insets top="20.0" />
+            </padding>
+         </TextField>
+         <HBox prefWidth="200.0" spacing="8.0">
+            <children>
+               <TextField fx:id="cardCvvInput" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the cvv..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <padding>
+                     <Insets top="20.0" />
+                  </padding>
+               </TextField>
+               <TextField fx:id="cardExpInput" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="600.0" promptText="Enter the expiration date..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <padding>
+                     <Insets top="20.0" />
+                  </padding>
+               </TextField>
+            </children>
+         </HBox>
+            <Label fx:id="errorLabel" textFill="RED" visible="false" />
+         <Label text="Dock Capabilities">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </Label>
+         <TextField fx:id="dockCapabilitiesInput" alignment="TOP_LEFT" prefHeight="100.0" promptText="Enter the dock capabilities..." style="-fx-background-color: white; -fx-border-color: D1D5DB; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-padding: 10px;" />
+         <HBox layoutX="42.0" layoutY="550.0" prefWidth="200.0" spacing="8.0">
+            <children>
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#onExit" prefWidth="600.0" style="-fx-background-color: #F3F4F6; -fx-padding: 10px; -fx-cursor: hand;" text="Back to Customers">
+                      <font>
+                          <Font size="14.0" />
+                      </font>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  </Button>
+               <Button fx:id="submitButton1" mnemonicParsing="false" onAction="#onSubmit" prefWidth="600.0" style="-fx-background-color: #03014F; -fx-padding: 10px; -fx-cursor: hand;" text="Add Customer" textFill="WHITE">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Button>
+            </children>
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
+         </HBox>
+        </children>
+   </VBox>
 </VBox>

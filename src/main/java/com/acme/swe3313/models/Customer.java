@@ -1,10 +1,6 @@
 package com.acme.swe3313.models;
 
-import com.acme.swe3313.util.JSON;
-
-import java.util.Scanner;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 //import org.json.simple.JSONObject;
 
@@ -17,46 +13,59 @@ public class Customer {
     private String city;
     private String streetAddress;
     private  String dockCapabilities;
-    private String deliveryConstraints;
     private  String fullAddress = getStreetAddress()+", "+getCity()+", "+getState()+", "+getZip();
     private String customerId;
     private String name;
     private String store;
-    private int phone;
+    private String phone;
 
     public String getBeerLicense(){return license;}
+    public void setBeerLicense(String setLicense){license=setLicense;}
     public String getName(){return name;}
     public String getStore(){return store;}
     public void setStore(String storeSet){store=storeSet;}
+    public String getCustomerId(){return customerId;}
+    public void setCustomerId(String iD){customerId=iD;}
     public String getCity(){return city;}
     public void setCity(String citySet){city=citySet;}
+    public void setDockCapabilities(String dock){dockCapabilities=dock;}
     public int getZip(){return zip;}
     public String getState(){return state;}
     public String getStreetAddress(){return streetAddress;}
 
     public String getFullAddress(){return fullAddress;}
+    public String getPhone(){return phone;}
+    public void setPhone(String phoneNum){phone=phoneNum;}
 
-    public Customer(String n, String l, String sA, String c, String s, String dock){
+    public Customer(String n, String sT, String sA, String c, String s, String phoneNum){
         name=n;
-        store=" ";
-        license=l;
-        /**
-         * generating random license number per customer object
-         *
-        for(int i = 0; i< beerLicense.length-1; i++){
-            beerLicense[i]= ThreadLocalRandom.current().nextInt(0,9);
+        store=sT;
+
+        // Create a unique customer ID
+        StringBuilder prefix = new StringBuilder();
+        StringBuilder storeId = new StringBuilder();
+        String[] storeSplit = store.split(" ");
+        for(int i=0; i< storeSplit.length; i++){
+            if(storeSplit[i].equalsIgnoreCase("the")){
+                prefix.append(storeSplit[i].toUpperCase());
+            }
+            else{
+                prefix.append(storeSplit[i].charAt(0));}
         }
-        for (int j : beerLicense) {
-            license = license * 10 + j;
+        storeId.append(prefix+"_");
+        for(int i=0; i<(14-prefix.length()); i++){
+            storeId.append(rand.nextInt(9));
         }
-        */
-        //zip=0;   **keep just in case zip is needed**
+        customerId= String.valueOf(storeId);
+
         streetAddress=sA;
         city=c;
         state=s;
         dockCapabilities=" ";
-        customerId=" ";
-        phone=0;
+        phone=phoneNum;
+    }
+    public static void importToCustomerJSON(Customer customer){
+
     }
 
 }
