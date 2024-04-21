@@ -71,10 +71,12 @@ public class AddCustomerController {
         newCustomer.put("state", customer.getState());
         newCustomer.put("phone", customer.getPhone());
 
+
         customers.add(newCustomer);
 
         // Write the new customer to the customers.json file
         JSON.write("/customers.json", customers);
+        Application.customers.add(customer);
 
         Application.setScene("customers-view.fxml");
     }

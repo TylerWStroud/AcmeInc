@@ -69,26 +69,22 @@ public class Application extends javafx.application.Application {
         }
     }
     public static void populateCustomers(){
-        JSONObject customerObj = JSON.parseObject("/customers.json");
+        JSONArray customersArray = JSON.parseDynamicArray("/customers.json");
 
-        /**
-         * creating a String array based on object.keySet() to use as an iterative search variable
-         * */
-        String keySet=customerObj.keySet().toString();
-        keySet=keySet.replaceFirst("]", ",");
-        keySet = keySet.substring(1);
-        String[] keySetArray = keySet.split(","+" ");
-        String replaceLastIndex = keySetArray[keySetArray.length-1].replace(",","");
-        keySetArray[keySetArray.length-1]=replaceLastIndex;
+        for (Object obj : customersArray) {
+            JSONObject customer = (JSONObject) obj;
 
-        /**
-         * populating customersArrayList
-         * */
-        for(String e: keySetArray){
-            JSONObject tempObj = (JSONObject)customerObj.get(e);
-            Customer tempCustomer = new Customer(tempObj.get("name").toString(), e, tempObj.get("address").toString(), tempObj.get("city").toString(), tempObj.get("state").toString(), tempObj.get("phone").toString());
-            tempCustomer.setCustomerId(tempObj.get("iD").toString());
-            customers.add(tempCustomer);
+            String id = customer.get("customer_id").toString();
+            String name = customer.get("name").toString();
+            String address = customer.get("address").toString();
+            String city = customer.get("city").toString();
+            String phone = customer.get("phone").toString();
+            String state = customer.get("state").toString();
+            String store = customer.get("store").toString();
+
+            Customer c  = new Customer (name, store, address, city, state, phone);
+
+            customers.add(c);
         }
     }
 

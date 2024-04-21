@@ -13,7 +13,11 @@ import java.io.IOException;
 
 public class CustomersController {
     @FXML
-    private Button addCustomerButton;
+    protected void initialize() {
+       for (Customer c: Application.customers) {
+           // Tyler: Add for each customer, a new table row dynamically.
+       }
+    }
 
     @FXML
     private void onAddCustomer(ActionEvent event) throws IOException{
