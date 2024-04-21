@@ -57,7 +57,7 @@ public class Customer {
             storeId.append(rand.nextInt(9));
         }
         customerId= String.valueOf(storeId);
-
+// test commit
         streetAddress=sA;
         city=c;
         state=s;
