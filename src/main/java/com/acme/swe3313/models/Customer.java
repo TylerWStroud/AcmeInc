@@ -33,6 +33,7 @@ public class Customer {
     public String getState(){return state;}
     public String getStreetAddress(){return streetAddress;}
 
+    //commit test
     public String getFullAddress(){return fullAddress;}
     public String getPhone(){return phone;}
     public void setPhone(String phoneNum){phone=phoneNum;}
