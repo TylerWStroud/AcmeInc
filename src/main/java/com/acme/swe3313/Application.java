@@ -56,7 +56,9 @@ public class Application extends javafx.application.Application {
 
         // If the file was just created, write an empty json object to it
         if (customersFileCreated) {
-            JSON.write("/customers.json", new JSONArray());
+            JSONArray customers = JSON.parseArray("/customers.json");
+
+            JSON.write("/customers.json", customers);
         }
 
         // Ensure the orders.json file exists, and create it if it doesn't.
