@@ -104,9 +104,9 @@
                   <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
                </padding>
             </HBox>
-            <ScrollPane fx:id="cardLayout" prefHeight="802.0" prefWidth="1872.0">
+            <ScrollPane prefHeight="802.0" prefWidth="1872.0">
                <content>
-                  <HBox fx:id="cardLayout" alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="1879.0" style="-fx-border-color: transparent transparent #D1D5DB transparent;">
+                  <HBox fx:id="customerLayout" alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="1879.0" style="-fx-border-color: transparent transparent #D1D5DB transparent;">
                      <children>
                         <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" text="Name">
                            <font>
