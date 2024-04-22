@@ -53,6 +53,8 @@ public class Customer {
         state=s;
         dockCapabilities=" ";
         phone=phoneNum;
+        cardNum=" ";
+        paymentMethod =" ";
 
         // Create a unique customer ID
         StringBuilder prefix = new StringBuilder();
@@ -70,10 +72,6 @@ public class Customer {
             storeId.append(rand.nextInt(9));
         }
         customerId= String.valueOf(storeId);
-
-        //creating Payment Method String
-        cardNum=" ";
-        paymentMethod =" ";
 
     }
 
