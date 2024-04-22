@@ -1,14 +1,13 @@
-{
-  "ABC Package Store": {
+[
+  {"store": "ABC Package Store",
     "name": "Nolen Ryann",
     "iD": "ABCPS_123432109",
     "address": "3324 Sandie Plains Rd",
     "city": "Marietta",
     "state": "GA",
     "phone": "558 555 1213"
-
   },
-    "BPD Grocery Store": {
+  {"Store":"BPD Grocery Store",
       "name": "James Johnson",
       "iD": "BPDGS_254786510",
       "address": "2960 Shallowford Rd",
@@ -16,7 +15,7 @@
       "state": "GA",
       "phone": "585 812 5784"
   },
-  "The Restaurant": {
+  {"store": "The Restaurant",
     "name": "Jessica Smith",
     "iD": "TREST_985741204",
     "address": "3460 Sandie Plains Rd",
@@ -24,7 +23,7 @@
     "state": "GA",
     "phone": "547 555 1217"
   },
-  "GHI Beverages": {
+  {"store":"GHI Beverages",
     "name": "Nellie Jones",
     "iD": "GHIBS_012382109",
     "address": "3324 Cobb Parkway",
@@ -32,7 +31,7 @@
     "state": "GA",
     "phone": "878 555 1214"
   },
-  "XYZ Groceries": {
+  {"store": "XYZ Groceries",
     "name": "Spencer Smithers",
     "iD": "XYZGS_654786810",
     "address": "2860 Deep River Rd",
@@ -40,7 +39,7 @@
     "state": "GA",
     "phone": "572 812 5674"
   },
-  "The Corner Restaurant": {
+  {"store": "The Corner Restaurant",
     "name": "Thomas Gav",
     "iD": "TCRST_945741304",
     "address": "34104 Madison Hwy",
@@ -48,4 +47,4 @@
     "state": "GA",
     "phone": "567 555 1210"
   }
-}
+]

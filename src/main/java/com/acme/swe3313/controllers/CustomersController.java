@@ -3,8 +3,10 @@ import com.acme.swe3313.Application;
 import com.acme.swe3313.models.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -12,20 +14,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomersController{
+import static com.acme.swe3313.Application.customers;
+
+public class CustomersController implements Initializable{
 
     @FXML
     public static VBox customerHbox;
-
     @FXML
-    protected void initialize() {
-        for (Customer c : Application.customers) {
-            updateCustomersView(c);
-            // Tyler: Add for each customer, a new table row dynamically.
+    private VBox customerVbox;
 
-            // WATCH https://www.youtube.com/watch?v=L3PLDAZWU9s&ab_channel=MahmoudHamwi
-        }
-    }
 
     @FXML
     public static TextField nameTextField;
@@ -36,7 +33,7 @@ public class CustomersController{
     @FXML
     public static TextField payMethodTextField;
 
-    public void updateCustomersView(Customer c) {
+ /*   public void updateCustomersView(Customer c) {
         nameTextField.setText(c.getName());
         addressTextField.setText(c.getStreetAddress());
         licenseTextField.setText(c.getBeerLicense());
@@ -47,9 +44,26 @@ public class CustomersController{
         customerHbox.getChildren().set(2, licenseTextField);
         customerHbox.getChildren().set(3, payMethodTextField);
         customerHbox.setLayoutX(10.0);
-    }
+    }*/
     @FXML
     private void onAddCustomer (ActionEvent event) throws IOException {
         Application.setScene("add-customer.fxml");
     }
-}
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+                try {
+                    for(Customer customer: customers) {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("customer-box.fxml"));
+                        HBox newBox = fxmlLoader.load();
+                        CustomerBoxController boxController = fxmlLoader.getController();
+                        boxController.setData(customer);
+                        customerHbox.getChildren().add(newBox);
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+    }
+

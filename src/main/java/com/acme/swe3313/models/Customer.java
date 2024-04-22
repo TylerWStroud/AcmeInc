@@ -30,6 +30,7 @@ public class Customer {
     public void setCustomerId(String iD){customerId=iD;}
     public String getCity(){return city;}
     public void setCity(String citySet){city=citySet;}
+    public String getDockCapabilities(){return dockCapabilities;}
     public void setDockCapabilities(String dock){dockCapabilities=dock;}
     public int getZip(){return zip;}
     public String getState(){return state;}
@@ -40,8 +41,12 @@ public class Customer {
     public void setCardNum(String card){cardNum=card;}
     public String getPaymentMethod(){return paymentMethod;}
     public void setPaymentMethod(){
-        paymentMethod ="Visa ending in "+cardNum.substring(cardNum.length()-4);
-
+        if(cardNum.length()<4){
+            paymentMethod = "Visa ending in <invalid card#>";
+        }
+        else {
+            paymentMethod = "Visa ending in " + cardNum.substring(cardNum.length() - 4);
+        }
     }
 
 

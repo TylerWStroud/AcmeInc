@@ -27,7 +27,7 @@ public class LoginController {
 
         try {
             if (associate.login(email, password)) {
-                populateCustomers();
+                //populateCustomers();
                 Application.setScene("customers-view.fxml");
             } else {
                 errorLabel.setVisible(true);
