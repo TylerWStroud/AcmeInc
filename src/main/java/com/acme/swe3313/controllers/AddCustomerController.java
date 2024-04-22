@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 
+
 public class AddCustomerController {
     @FXML
     private TextField storeNameInput;
@@ -42,9 +43,7 @@ public class AddCustomerController {
     }
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
-        JSONArray customers = JSON.parseDynamicArray("/customers.json");
-        System.out.print(customers);
-
+        JSONArray customers = new JSONArray();
         String storeName = storeNameInput.getText();
         String customerName = nameInput.getText();
         String streetAddress = streetAddressInput.getText();
@@ -52,15 +51,17 @@ public class AddCustomerController {
         String state = stateInput.getText();
         String phoneNumber = phoneNumberInput.getText();
         String license = licenseInput.getText();
-       /* String cardNum = cardNumInput.getText();
-        String cardExp = cardExpInput.getText();         HOLDING INCASE NECESSARY
+        String cardNum = cardNumInput.getText();
+       /* String cardExp = cardExpInput.getText();         HOLDING INCASE NECESSARY
         String cardCvv = cardCvvInput.getText();*/
         String dockCapabilities = dockCapabilitiesInput.getText();
 
         // Create the new customer object
-        Customer customer = new Customer(customerName, storeName, streetAddress, city, state, phoneNumber );
+        Customer customer = new Customer(customerName, storeName, streetAddress, city, state, phoneNumber);
         customer.setDockCapabilities(dockCapabilities);
         customer.setBeerLicense(license);
+        customer.setCardNum(cardNum);
+        customer.setPaymentMethod();
         JSONObject newCustomer = new JSONObject();
 
         newCustomer.put("store", customer.getStore());
@@ -76,8 +77,12 @@ public class AddCustomerController {
 
         // Write the new customer to the customers.json file
         JSON.write("/customers.json", customers);
-        Application.customers.add(customer);
+        customers.add(customer);
 
         Application.setScene("customers-view.fxml");
     }
-}
+
+
+        }
+
+

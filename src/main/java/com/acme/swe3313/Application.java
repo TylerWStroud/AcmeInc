@@ -10,6 +10,8 @@ import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +73,7 @@ public class Application extends javafx.application.Application {
         }
     }
     public static void populateCustomers(){
-        JSONArray customersArray = JSON.parseDynamicArray("/customers.json");
+        JSONArray customersArray = JSON.parseArray("/customers.json");
 
         for (Object obj : customersArray) {
             JSONObject customer = (JSONObject) obj;
@@ -84,11 +86,14 @@ public class Application extends javafx.application.Application {
             String state = customer.get("state").toString();
             String store = customer.get("store").toString();
 
+
             Customer c  = new Customer (name, store, address, city, state, phone);
+            c.setCustomerId(id);
 
             customers.add(c);
         }
     }
+
 
     public static void main(String[] args) {
         // First, create the necessary files
