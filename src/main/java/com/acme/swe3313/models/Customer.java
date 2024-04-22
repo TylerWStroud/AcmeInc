@@ -1,10 +1,10 @@
 package com.acme.swe3313.models;
 
+import java.io.File;
 import java.util.Random;
 
-//import org.json.simple.JSONObject;
-
 public class Customer {
+
     Random rand = new Random();
     private int[] beerLicense = new int[9];
     private String license;
@@ -34,15 +34,25 @@ public class Customer {
     public int getZip(){return zip;}
     public String getState(){return state;}
     public String getStreetAddress(){return streetAddress;}
-
-    //commit test
     public String getFullAddress(){return fullAddress;}
     public String getPhone(){return phone;}
     public void setPhone(String phoneNum){phone=phoneNum;}
+    public void setCardNum(String card){cardNum=card;}
+    public String getPaymentMethod(){return paymentMethod;}
+    public void setPaymentMethod(){
+        paymentMethod ="Visa ending in "+cardNum.substring(cardNum.length()-4);
+
+    }
+
 
     public Customer(String n, String sT, String sA, String c, String s, String phoneNum){
         name=n;
         store=sT;
+        streetAddress=sA;
+        city=c;
+        state=s;
+        dockCapabilities=" ";
+        phone=phoneNum;
 
         // Create a unique customer ID
         StringBuilder prefix = new StringBuilder();
@@ -60,15 +70,12 @@ public class Customer {
             storeId.append(rand.nextInt(9));
         }
         customerId= String.valueOf(storeId);
-// test commit
-        streetAddress=sA;
-        city=c;
-        state=s;
-        dockCapabilities=" ";
-        phone=phoneNum;
-    }
-    public static void importToCustomerJSON(Customer customer){
+
+        //creating Payment Method String
+        cardNum=" ";
+        paymentMethod =" ";
 
     }
+
 
 }

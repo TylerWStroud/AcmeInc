@@ -4,6 +4,7 @@ module com.acme.swe {
 
     requires org.kordamp.bootstrapfx.core;
     requires json.simple;
+    requires jakarta.xml.bind;
 
     opens com.acme.swe3313 to javafx.fxml;
     exports com.acme.swe3313;
