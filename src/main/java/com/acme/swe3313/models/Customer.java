@@ -18,6 +18,8 @@ public class Customer {
     private String name;
     private String store;
     private String phone;
+    private String cardNum;
+    private String paymentMethod;
 
     public String getBeerLicense(){return license;}
     public void setBeerLicense(String setLicense){license=setLicense;}
