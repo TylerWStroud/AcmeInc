@@ -11,7 +11,11 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 
-public class CustomersController {
+public class CustomersController{
+
+    @FXML
+    public static VBox customerHbox;
+
     @FXML
     protected void initialize() {
         for (Customer c : Application.customers) {
