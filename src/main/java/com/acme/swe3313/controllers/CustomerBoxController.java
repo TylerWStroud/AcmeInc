@@ -29,6 +29,6 @@ public class CustomerBoxController {
     paymentMethText.setText(customer.getPaymentMethod());
     dockCapabilitiesText.setText(customer.getDockCapabilities());
 
-    customerHBox.setStyle("-fx-border-color: #"+ "transparent");
+    customerHBox.setStyle("-fx-border-color: transparent transparent #D1D5DB transparent");
     }
 }
