@@ -91,6 +91,7 @@ public class Application extends javafx.application.Application{
             c.setCustomerId(iD);
             customers.add(c);
         }
+
     }
 
 
